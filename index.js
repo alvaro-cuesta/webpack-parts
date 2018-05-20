@@ -10,6 +10,9 @@ exports.basic = function({ entry, outputPath }) {
       filename: '[name].[hash].js',
       chunkFilename: '[chunkhash].js'
     },
+    serve: {
+      host: '0.0.0.0',
+    },
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment ? 'eval-source-map ' : 'source-map',
   };
