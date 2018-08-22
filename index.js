@@ -1,9 +1,11 @@
 "use strict";
 
 const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isDevelopment = !!process.env.WEBPACK_SERVE;
 
+/**/
 exports.basic = function({ entry, outputPath, alias }) {
   return {
     entry,
@@ -159,4 +161,23 @@ exports.styles = function(styleLoaders) {
         }
       : {},
   );
+};
+
+/**/
+exports.EJS = function({
+  title,
+  metadata,
+  template = path.join(__dirname, 'index.ejs'),
+}) {
+  return {
+    plugins: [
+      new HtmlWebpackPlugin({
+        title,
+        metadata,
+        template,
+        chunksSortMode: 'dependency',
+        minify: { collapseWhitespace: true },
+      }),
+    ],
+  };
 };
