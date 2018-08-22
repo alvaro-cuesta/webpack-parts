@@ -4,7 +4,7 @@ const merge = require('webpack-merge');
 
 const isDevelopment = !!process.env.WEBPACK_SERVE;
 
-exports.basic = function({ entry, outputPath }) {
+exports.basic = function({ entry, outputPath, alias }) {
   return {
     entry,
     output: {
@@ -12,6 +12,7 @@ exports.basic = function({ entry, outputPath }) {
       filename: isDevelopment ? '[name].js' : '[name].[hash].js',
       chunkFilename: '[chunkhash].js'
     },
+    resolve: { alias },
     serve: {
       //host: '0.0.0.0',  TODO: Bind on 0.0.0.0 but keep WS address
     },
