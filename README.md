@@ -4,7 +4,7 @@ My Webpack (^4.8.3) config parts. Simple and sane Webpack defaults for _my_
 most common use cases.
 
 ```sh
-npm install --save-dev webpack webpack-merge webpack-cli webpack-serve git+https://github.com/alvaro-cuesta/webpack-parts#semver:^0.1.1
+npm install --save-dev webpack webpack-merge webpack-cli webpack-serve git+https://github.com/alvaro-cuesta/webpack-parts#semver:^0.2.2
 ```
 
 Example `webpack.config.js`:
