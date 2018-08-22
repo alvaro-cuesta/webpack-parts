@@ -6,13 +6,24 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const IS_DEVELOPMENT = !!process.env.WEBPACK_SERVE;
 
+const IS_GITHUB =
+  process.env.npm_lifecycle_event === 'build:gh-pages' ||
+  process.env.npm_lifecycle_event === 'deploy:gh-pages'
+
 exports.basic = function({ entry, outputPath, alias }) {
   return {
     entry,
     output: {
       path: outputPath,
       filename: IS_DEVELOPMENT ? '[name].js' : '[name].[hash].js',
-      chunkFilename: '[chunkhash].js'
+      chunkFilename: '[chunkhash].js',
+      publicPath: (
+          IS_DEVELOPMENT
+          ? '/'
+        : IS_GITHUB
+          ? `/${metadata.name}/`
+        : undefined
+      )
     },
     resolve: { alias },
     serve: {

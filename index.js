@@ -6,13 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const parts = require('./parts');
 
-const IS_DEVELOPMENT = !!process.env.WEBPACK_SERVE
-
-const IS_GITHUB =
+const IS_BUILD =
   process.env.npm_lifecycle_event === 'build:gh-pages' ||
-  process.env.npm_lifecycle_event === 'deploy:gh-pages'
-
-const IS_BUILD = IS_GITHUB ||
+  process.env.npm_lifecycle_event === 'deploy:gh-pages' ||
   process.env.npm_lifecycle_event === 'build'
 
 exports.spa = ({
@@ -38,8 +34,6 @@ exports.spa = ({
       parts.CSS(),
       parts.SASS(),
     ]),
-    IS_GITHUB && { output: { publicPath: `/${metadata.name}/` } },
     /* IS_BUILD && parts.clean(PATHS.build), */
-    IS_DEVELOPMENT && { output: { publicPath: '/' } }
   )
 )
