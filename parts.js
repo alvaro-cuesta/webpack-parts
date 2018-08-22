@@ -1,6 +1,7 @@
 "use strict";
 
 const merge = require('webpack-merge');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -8,9 +9,13 @@ const IS_DEVELOPMENT = !!process.env.WEBPACK_SERVE;
 
 const IS_GITHUB =
   process.env.npm_lifecycle_event === 'build:gh-pages' ||
-  process.env.npm_lifecycle_event === 'deploy:gh-pages'
+  process.env.npm_lifecycle_event === 'deploy:gh-pages';
 
-exports.basic = function({ entry, outputPath, alias }) {
+const IS_BUILD =
+  IS_GITHUB ||
+  process.env.npm_lifecycle_event === 'build';
+
+exports.basic = function({ entry, projectRoot, outputPath, alias }) {
   return {
     entry,
     output: {
@@ -29,6 +34,12 @@ exports.basic = function({ entry, outputPath, alias }) {
     serve: {
       //host: '0.0.0.0',  TODO: Bind on 0.0.0.0 but keep WS address
     },
+    plugins: [
+      ...(IS_BUILD
+        ? [ new CleanWebpackPlugin([ outputPath ], { root: projectRoot }) ]
+        : []
+      ),
+    ],
     mode: IS_DEVELOPMENT ? 'development' : 'production',
     devtool: IS_DEVELOPMENT ? 'eval-source-map ' : 'source-map',
   };

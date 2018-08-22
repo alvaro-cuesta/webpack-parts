@@ -6,10 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const parts = require('./parts');
 
-const IS_BUILD =
-  process.env.npm_lifecycle_event === 'build:gh-pages' ||
-  process.env.npm_lifecycle_event === 'deploy:gh-pages' ||
-  process.env.npm_lifecycle_event === 'build'
+const PROJECT_ROOT = process.cwd();
 
 exports.spa = ({
   name,
@@ -20,6 +17,7 @@ exports.spa = ({
   merge(
     parts.basic({
       entry: path.join(paths.app, 'index.jsx'),
+      projectRoot: PROJECT_ROOT,
       outputPath: paths.output,
       alias,
     }),
@@ -34,6 +32,5 @@ exports.spa = ({
       parts.CSS(),
       parts.SASS(),
     ]),
-    /* IS_BUILD && parts.clean(PATHS.build), */
   )
-)
+);
