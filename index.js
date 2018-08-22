@@ -3,7 +3,7 @@
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const isDevelopment = !!process.env.WEBPACK_SERVE;
+const IS_DEVELOPMENT = !!process.env.WEBPACK_SERVE;
 
 /**/
 exports.basic = function({ entry, outputPath, alias }) {
@@ -11,15 +11,15 @@ exports.basic = function({ entry, outputPath, alias }) {
     entry,
     output: {
       path: outputPath,
-      filename: isDevelopment ? '[name].js' : '[name].[hash].js',
+      filename: IS_DEVELOPMENT ? '[name].js' : '[name].[hash].js',
       chunkFilename: '[chunkhash].js'
     },
     resolve: { alias },
     serve: {
       //host: '0.0.0.0',  TODO: Bind on 0.0.0.0 but keep WS address
     },
-    mode: isDevelopment ? 'development' : 'production',
-    devtool: isDevelopment ? 'eval-source-map ' : 'source-map',
+    mode: IS_DEVELOPMENT ? 'development' : 'production',
+    devtool: IS_DEVELOPMENT ? 'eval-source-map ' : 'source-map',
   };
 };
 
@@ -37,7 +37,7 @@ exports.basic = function({ entry, outputPath, alias }) {
  * @babel/runtime                   ^7.0.0-beta.47
  */
 exports.babelJS = function() {
-  process.env.BABEL_ENV = isDevelopment ? 'development' : 'production'
+  process.env.BABEL_ENV = IS_DEVELOPMENT ? 'development' : 'production'
 
   return {
     resolve: {
@@ -54,10 +54,10 @@ exports.babelJS = function() {
               loader: 'babel-loader',
               options: {
                 presets: [ '@babel/preset-env' ],
-                plugins: isDevelopment
+                plugins: IS_DEVELOPMENT
                   ? [ '@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties' ]
                   : [ '@babel/plugin-proposal-class-properties' ],
-                cacheDirectory: isDevelopment,
+                cacheDirectory: IS_DEVELOPMENT,
               },
             },
           ],
@@ -87,7 +87,7 @@ exports.babelJSX = function() {
 
   options.presets.push('@babel/preset-react');
 
-  if (isDevelopment) {
+  if (IS_DEVELOPMENT) {
     options.plugins.push('react-hot-loader/babel');
   }
 
@@ -140,7 +140,7 @@ exports.styles = function(styleLoaders) {
   for (let { module: { rules } } of styleLoaders) {
     for (let rule of rules) {
       rule.use.splice(0, 0,
-        isDevelopment
+        IS_DEVELOPMENT
           ? 'style-loader'
           : MiniCssExtractPlugin.loader
       );
@@ -149,13 +149,12 @@ exports.styles = function(styleLoaders) {
 
   return merge(
     ...styleLoaders,
-
-    !isDevelopment
+    !IS_DEVELOPMENT
       ? {
           plugins: [
             new MiniCssExtractPlugin({
-              filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-              chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+              filename: IS_DEVELOPMENT ? '[name].css' : '[name].[hash].css',
+              chunkFilename: IS_DEVELOPMENT ? '[id].css' : '[id].[hash].css',
             }),
           ],
         }
