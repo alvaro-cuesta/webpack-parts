@@ -1,6 +1,6 @@
 {
   "name": "alvaro-cuesta-webpack-parts",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Álvaro Cuesta's Webpack config parts",
   "main": "index.js",
   "repository": {
@@ -16,13 +16,16 @@
   ],
   "author": {
     "name": "Álvaro Cuesta",
-    "url" : "https://alvaro-cuesta.github.io/"
+    "url": "https://alvaro-cuesta.github.io/"
   },
   "license": "ISC",
+  "dependencies": {
+    "webpack-merge": "^4.1.3"
+  },
   "peerDependencies": {
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3",
-    "webpack-merge": "^4.1.2",
-    "webpack-serve": "^1.0.2"
+    "webpack-cli": "^3.0.8",
+    "webpack-serve": "^2.0.2",
+    "webpack": "^4.16.0",
+    "mini-css-extract-plugin": "^0.4.1"
   }
 }

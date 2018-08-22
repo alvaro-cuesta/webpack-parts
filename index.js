@@ -1,17 +1,19 @@
 "use strict";
 
-const isDevelopment = !!process.env.WEBPACK_SERVE
+const merge = require('webpack-merge');
+
+const isDevelopment = !!process.env.WEBPACK_SERVE;
 
 exports.basic = function({ entry, outputPath }) {
   return {
     entry,
     output: {
       path: outputPath,
-      filename: '[name].[hash].js',
+      filename: isDevelopment ? '[name].js' : '[name].[hash].js',
       chunkFilename: '[chunkhash].js'
     },
     serve: {
-      host: '0.0.0.0',
+      //host: '0.0.0.0',  TODO: Bind on 0.0.0.0 but keep WS address
     },
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment ? 'eval-source-map ' : 'source-map',
@@ -20,11 +22,12 @@ exports.basic = function({ entry, outputPath }) {
 
 /* Dependencies:
  *
- * babel-loader                     ^8.0.0-beta.3
- * @babel/core                      ^7.0.0-beta.47
- * @babel/preset-env                ^7.0.0-beta.47
- * @babel/preset-stage-3            ^7.0.0-beta.47
- * @babel/plugin-transform-runtime  ^7.0.0-beta.47
+ * babel-loader                               ^8.0.0-beta.3
+ * @babel/core                                ^7.0.0-beta.47
+ * @babel/preset-env                          ^7.0.0-beta.47
+ * @babel/plugin-transform-runtime            ^7.0.0-beta.47
+ * @babel/plugin-transform-async-to-generator ^7.0.0-beta.53
+ * @babel/plugin-proposal-class-properties    ^7.0.0-rc.2
  *
  * Runtime dependencies:
  *
@@ -47,13 +50,10 @@ exports.babelJS = function() {
             {
               loader: 'babel-loader',
               options: {
-                presets: [
-                  '@babel/preset-env',
-                  '@babel/preset-stage-3',
-                ],
+                presets: [ '@babel/preset-env' ],
                 plugins: isDevelopment
-                  ? [ '@babel/plugin-transform-runtime' ]
-                  : [],
+                  ? [ '@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties' ]
+                  : [ '@babel/plugin-proposal-class-properties' ],
                 cacheDirectory: isDevelopment,
               },
             },
@@ -65,6 +65,8 @@ exports.babelJS = function() {
 };
 
 /* Dependencies:
+ *
+ * All from babelJS() and:
  *
  * @babel/preset-react  ^7.0.0-beta.47
  * react-hot-loader     ^4.2.0
@@ -92,7 +94,6 @@ exports.babelJSX = function() {
 /* Dependencies:
  *
  * css-loader   ^0.28.11
- * style-loader ^0.21.0
  */
 exports.CSS = function() {
   return {
@@ -100,9 +101,61 @@ exports.CSS = function() {
       rules: [
         {
           test: /\.css$/,
-          use: [ 'style-loader', 'css-loader' ],
+          use: [ 'css-loader' ],
         },
       ],
     },
   };
-}
+};
+
+/* Dependencies:
+
+ * node-sass    ^4.9.0
+ * sass-loader  ^7.0.1
+ * css-loader   ^0.28.11
+ */
+exports.SASS = function() {
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.s[ac]ss$/,
+          use: [ 'css-loader', 'sass-loader' ],
+        },
+      ],
+    },
+  };
+};
+
+/* Dependencies:
+ *
+ * style-loader ^0.21.0
+ */
+ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+exports.styles = function(styleLoaders) {
+  for (let { module: { rules } } of styleLoaders) {
+    for (let rule of rules) {
+      rule.use.splice(0, 0,
+        isDevelopment
+          ? 'style-loader'
+          : MiniCssExtractPlugin.loader
+      );
+    }
+  }
+
+  return merge(
+    ...styleLoaders,
+
+    !isDevelopment
+      ? {
+          plugins: [
+            new MiniCssExtractPlugin({
+              filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+              chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+            }),
+          ],
+        }
+      : {},
+  );
+};
