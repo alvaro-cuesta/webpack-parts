@@ -4,7 +4,7 @@ My Webpack (^4.8.3) config parts. Simple and sane Webpack defaults for _my_
 most common use cases.
 
 ```sh
-npm install --save-dev webpack webpack-merge webpack-cli webpack-serve git+https://github.com/alvaro-cuesta/webpack-parts#semver:^0.2.2
+npm install --save-dev webpack webpack-merge webpack-cli webpack-serve alvaro-cuesta-webpack-parts
 ```
 
 Example `webpack.config.js`:
@@ -30,7 +30,7 @@ include in your project.
 
 ## License
 
-ISC License (ISC)
+**ISC License (ISC)**
 
 Copyright (c) 2018, Álvaro Cuesta <https://alvaro-cuesta.github.io>
 
