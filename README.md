@@ -4,7 +4,7 @@ My Webpack (^4.8.3) config parts. Simple and sane Webpack defaults for _my_
 most common use cases.
 
 ```sh
-npm install --save-dev alvaro-cuesta-webpack-parts webpack webpack-merge webpack-cli webpack-serve react-hot-loader
+npm install --save-dev @alvaro-cuesta/webpack-parts webpack webpack-merge webpack-cli webpack-serve react-hot-loader
 ```
 
 You can import [parts](parts.js) individually or load a [preset](#presets).
