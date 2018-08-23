@@ -3,6 +3,9 @@
   "version": "0.4.0",
   "description": "Álvaro Cuesta's Webpack config parts",
   "main": "index.js",
+  "bin" : {
+    "webpack-parts-deploy-gh-pages": "./bin/deploy-gh-pages.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://www.github.com/alvaro-cuesta/webpack-parts.git"
