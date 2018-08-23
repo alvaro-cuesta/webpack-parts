@@ -30,6 +30,7 @@ exports.spa = ({
     parts.babelJSX(),
     parts.styles([
       parts.CSS(),
+      parts.CSSModules(),
       parts.SASS(),
     ]),
   )
