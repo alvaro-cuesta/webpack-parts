@@ -4,29 +4,30 @@ My Webpack (^4.8.3) config parts. Simple and sane Webpack defaults for _my_
 most common use cases.
 
 ```sh
-npm install --save-dev webpack webpack-merge webpack-cli webpack-serve alvaro-cuesta-webpack-parts
+npm install --save-dev alvaro-cuesta-webpack-parts webpack webpack-merge webpack-cli webpack-serve react-hot-loader
 ```
 
-Example `webpack.config.js`:
+You can import [parts](parts.js) individually or load a [preset](#presets).
+
+## [Presets](index.js)
+
+### Single-Page App
 
 ```javascript
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const parts = require('alvaro-cuesta-webpack-parts');
+const path = require('path');
 
-module.exports = merge(
-  parts.basic({
-    entry: path.join(__dirname, 'app', 'index.jsx'),
-    outputPath: path.join(__dirname, 'build'),
-  }),
-  parts.babelJS(),
-  parts.babelJSX(),
-  parts.CSS(),
-);
+const paths = {
+  app: path.join(__dirname, 'src'),
+  output: path.join(__dirname, 'build'),
+};
+
+module.exports = require('alvaro-cuesta-webpack-parts').spa({
+  name: 'SPA Name',
+  paths,
+  alias: { components: path.join(paths.app, 'components') },
+});
+
 ```
-
-See each part in [index.js](index.js) for a list of dependencies you must
-include in your project.
 
 ## License
 
