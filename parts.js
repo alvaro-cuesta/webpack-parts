@@ -13,7 +13,9 @@ const IS_GITHUB =
   process.env.npm_lifecycle_event === 'build:gh-pages' ||
   process.env.npm_lifecycle_event === 'deploy:gh-pages';
 
-const IS_BUILD = process.env.npm_lifecycle_event === 'build';
+const IS_BUILD =
+  IS_GITHUB ||
+  process.env.npm_lifecycle_event === 'build';
 
 exports.basic = function({ entry, projectName, projectRoot, outputPath, alias }) {
   return {
