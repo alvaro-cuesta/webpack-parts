@@ -182,11 +182,7 @@ exports.styles = function(styleLoaders) {
 };
 
 /**/
-exports.EJS = function({
-  title,
-  metadata,
-  template = path.join(__dirname, 'index.ejs'),
-}) {
+exports.EJS = function({ title, metadata, template }) {
   return {
     plugins: [
       new HtmlWebpackPlugin({
