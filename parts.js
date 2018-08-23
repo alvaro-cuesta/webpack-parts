@@ -107,7 +107,14 @@ exports.CSS = function() {
       rules: [
         {
           test: /\.css$/,
-          use: [ 'css-loader' ],
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+              },
+            }
+          ],
         },
       ],
     },
@@ -125,6 +132,7 @@ exports.CSSModules = function() {
               loader: 'css-loader',
               options: {
                 modules: true,
+                sourceMap: true,
               },
             }
           ],
