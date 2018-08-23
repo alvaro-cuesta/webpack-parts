@@ -1,6 +1,6 @@
 {
   "name": "alvaro-cuesta-webpack-parts",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Álvaro Cuesta's Webpack config parts",
   "main": "index.js",
   "repository": {
