@@ -12,7 +12,6 @@ exports.spa = ({
   name,
   paths,
   alias,
-  metadata,
 }) => (
   merge(
     parts.basic({
@@ -24,7 +23,7 @@ exports.spa = ({
     parts.EJS({
       title: name,
       template: path.join(paths.app, 'index.ejs'),
-      metadata,
+      metadata: require(path.join(PROJECT_ROOT, 'package.json')),
     }),
     parts.babelJS(),
     parts.babelJSX(),
