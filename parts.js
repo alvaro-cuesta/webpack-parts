@@ -15,7 +15,7 @@ const IS_GITHUB =
 
 const IS_BUILD = process.env.npm_lifecycle_event === 'build';
 
-exports.basic = function({ entry, projectRoot, outputPath, alias }) {
+exports.basic = function({ entry, projectName, projectRoot, outputPath, alias }) {
   return {
     entry,
     output: {
@@ -26,7 +26,7 @@ exports.basic = function({ entry, projectRoot, outputPath, alias }) {
           IS_DEVELOPMENT
           ? '/'
         : IS_GITHUB
-          ? `/${metadata.name}/`
+          ? `/${projectName}/`
         : undefined
       )
     },

@@ -6,7 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const parts = require('./parts');
 
-const PROJECT_ROOT = process.cwd();
+const projectRoot = process.cwd();
+
+const metadata = require(path.join(projectRoot, 'package.json'))
 
 exports.spa = ({
   name,
@@ -17,14 +19,15 @@ exports.spa = ({
   merge(
     parts.basic({
       entry: path.join(paths.app, 'index.jsx'),
-      projectRoot: PROJECT_ROOT,
+      projectName: metadata.name,
+      projectRoot,
       outputPath: paths.output,
       alias,
     }),
     parts.EJS({
       title: name,
       template,
-      metadata: require(path.join(PROJECT_ROOT, 'package.json')),
+      metadata,
     }),
     parts.babelJS(),
     parts.babelJSX(),
