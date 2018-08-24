@@ -7,9 +7,9 @@ most common use cases.
 npm install --save-dev @alvaro-cuesta/webpack-parts webpack webpack-merge webpack-cli webpack-serve react-hot-loader
 ```
 
-You can import [parts](parts.js) individually or load a [preset](#presets).
+You can import [parts](lib/parts.js) individually or load a [preset](#presets).
 
-## [Presets](index.js)
+## [Presets](lib/index.js)
 
 ### Single-Page App
 
@@ -21,11 +21,12 @@ const paths = {
   output: path.join(__dirname, 'build'),
 };
 
-module.exports = require('alvaro-cuesta-webpack-parts').spa({
-  name: 'SPA Name',
-  paths,
-  alias: { components: path.join(paths.app, 'components') },
-});
+module.exports = require('@alvaro-cuesta/webpack-parts')
+  .spa({
+    name: 'My App',
+    paths,
+    alias: { components: path.join(paths.app, 'components') },
+  });
 
 ```
 
