@@ -7,7 +7,6 @@
     "build": "webpack --progress --profile --colors --bail",
     "build:gh-pages": "webpack --progress --profile --colors --bail",
     "dev": "webpack-serve --config webpack.config.js",
-    "watch": "webpack -w --progress --profile --colors",
     "preversion": "yarn build",
     "deploy": "yarn deploy:gh-pages",
     "predeploy:gh-pages": "yarn build:gh-pages",
