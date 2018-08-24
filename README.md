@@ -10,6 +10,12 @@ npm install --save-dev @alvaro-cuesta/webpack-parts webpack webpack-merge webpac
 You can import [parts](lib/parts.js) individually, load a [preset](lib/index.js)
 or just copy&paste (or base your project) in one of our [skeletons](skeletons).
 
+## Publishing `@alvaro-cuesta/webpack-parts`
+
+1. `yarn version --(major | minor | patch)`
+2. `yarn publish --access=public`
+3. `git push && git push --tags`
+
 ## License
 
 **ISC License (ISC)**
