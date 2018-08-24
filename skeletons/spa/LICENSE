@@ -1,20 +1,6 @@
-# Álvaro Cuesta Webpack config parts
+ISC License (ISC)
 
-My Webpack (^4.8.3) config parts. Simple and sane Webpack defaults for _my_
-most common use cases.
-
-```sh
-npm install --save-dev @alvaro-cuesta/webpack-parts webpack webpack-merge webpack-cli webpack-serve react-hot-loader
-```
-
-You can import [parts](lib/parts.js) individually, load a [preset](lib/index.js)
-or just copy&paste (or base your project) in one of our [skeletons](skeletons).
-
-## License
-
-**ISC License (ISC)**
-
-Copyright (c) 2018, Álvaro Cuesta <https://alvaro-cuesta.github.io>
+Copyright (c) 2018, #AUTHOR#
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
