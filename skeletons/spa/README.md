@@ -23,7 +23,7 @@ Live demo: https://#GITHUB_USERNAME#.github.io/#PROJECT_NAME#/
 - Start a development server at http://localhost:8080:
 
 ```sh
-yarn dev
+yarn start
 ```
 
 - Build the application in the `build/` directory:
