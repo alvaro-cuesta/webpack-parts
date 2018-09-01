@@ -22,15 +22,22 @@ Live demo: https://#GITHUB_USERNAME#.github.io/#PROJECT_NAME#/
 
 - Start a development server at http://localhost:8080:
 
-```sh
-yarn start
-```
+    ```sh
+    yarn start
+    ```
+
+- ...or accessible from anywhere (generally LAN and, if your ports are
+    forwarded, including the internet):
+
+    ```sh
+    yarn public
+    ```
 
 - Build the application in the `build/` directory:
 
-```sh
-yarn build
-```
+    ```sh
+    yarn build
+    ```
 
 - See [open tasks](TODO.md)
 

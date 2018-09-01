@@ -11,8 +11,6 @@
 - Lint warnings on dev console
 - https://github.com/andywer/webpack-blocks
 - https://gist.github.com/lancejpollard/1978404
-- Bind on 0.0.0.0 (LAN access for mobile testing) but dev server WebSocket
-  still working.
 - @babel/plugin-transform-runtime?
 - Is vendor chunk extraction separating CSS in a separate chunk too?
 - Allow specifying html lang and meta tag
