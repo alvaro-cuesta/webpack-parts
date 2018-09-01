@@ -17,7 +17,7 @@ to configure webpack correctly. Check out our example [`package.json`](skeletons
 ## Publishing `@alvaro-cuesta/webpack-parts`
 
 1. `yarn version --(major | minor | patch)`
-2. `yarn publish --access=public`
+2. `yarn publish`
 3. `git push && git push --tags`
 
 ## License
