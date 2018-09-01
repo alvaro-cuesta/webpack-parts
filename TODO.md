@@ -1,10 +1,9 @@
 # TODO
 
-- Webpack colors on build/watch (`webpack-serve` shows colors though)
+- Webpack colors on build (`webpack-serve` shows colors though)
 - Banner plugin
 - SASS modules
 - Is SASS source map working in dev?
-- Add template or mention package.json scripts and etc. in readme
 - Check if bundle hash is content-based (seems to change sometimes)
 - Do not clean build if error building
 - optimization.noEmitOnErrors?
@@ -17,3 +16,4 @@
 - https://gist.github.com/lancejpollard/1978404
 - Bind on 0.0.0.0 (LAN access for mobile testing) but dev server WebSocket
   still working.
+- @babel/plugin-transform-runtime?
