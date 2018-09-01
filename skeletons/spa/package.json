@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-serve --config webpack.config.js",
     "public": "webpack-serve --env.public --config webpack.config.js",
-    "build": "webpack --progress --profile --colors --bail",
-    "build:gh-pages": "webpack --progress --profile --colors --bail",
+    "build": "webpack --env.colors --progress --profile --bail",
+    "build:gh-pages": "webpack --env.colors --progress --profile --bail",
     "preversion": "yarn build",
     "deploy": "yarn deploy:gh-pages",
     "predeploy:gh-pages": "yarn build:gh-pages",
