@@ -11,8 +11,8 @@ You can import [parts](lib/parts.js) individually, load a [preset](lib/index.js)
 or just copy&paste (or base your project) in one of our [skeletons](skeletons).
 
 For now some parts are heavily tied to `package.json` script names. Namely,
-`build`, `build:gh-pages` and `deploy:gh-pages` are required for `parts.basic`
-to configure webpack correctly. Check out our example [`package.json`](skeletons/spa/package.json).
+`build`, `build:gh-pages`, `deploy:gh-pages` and `public` are required to
+configure webpack correctly. Check out our example [`package.json`](skeletons/spa/package.json).
 
 ## Publishing `@alvaro-cuesta/webpack-parts`
 
