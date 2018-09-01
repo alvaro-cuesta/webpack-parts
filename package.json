@@ -1,6 +1,6 @@
 {
   "name": "@alvaro-cuesta/webpack-parts",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Álvaro Cuesta's Webpack config parts",
   "private": false,
   "main": "lib/index.js",
