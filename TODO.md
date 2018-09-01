@@ -17,3 +17,4 @@
 - Bind on 0.0.0.0 (LAN access for mobile testing) but dev server WebSocket
   still working.
 - @babel/plugin-transform-runtime?
+- Is vendor chunk extraction separating CSS in a separate chunk too?
