@@ -18,4 +18,5 @@
   html plugin, hard to reproduce (but sometimes happens when uploading to gh pages)
 - Migrate back to webpack-dev-server?
   - https://github.com/webpack/webpack-dev-server/issues/1463
-  - AFAICT there is no way to tune output (e.g. only errors and warning)
+  - AFAICT there is no way to tune output (e.g. only errors and warning), maybe
+    using webpackDevMiddleware?
